@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+from datetime import timedelta
 
 try:
     from .local import *
@@ -41,7 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user.apps.UserConfig',
+    'phonenumber_field',
+    'rest_framework',
+    'knox',
 ]
+
+AUTH_USER_MODEL = 'user.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,7 +82,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [
     # Application custom auth backend
-    'app.models.AuthentificationBackend',
+    'user.backends.AuthentificationBackend',
 ]
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -85,6 +91,25 @@ AUTHENTICATION_BACKENDS = [
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
+DATABASES = {
+
+    'default': {
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'database',
+
+        'USER': 'postgres',
+
+        'PASSWORD': 'tejas',
+
+        'HOST': '127.0.0.1',
+
+        'PORT': '5432',
+
+    }
+
+}
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -112,6 +137,7 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -122,3 +148,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
+    'TOKEN_TTL': timedelta(hours=100),
+}
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'tejasjdorge@gmail.com'
+EMAIL_HOST_PASSWORD = 'dqdvieebxqpysqzk'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
