@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser,PasswordResetCode,AbstractBaseCode
+from .models import CustomUser,PasswordResetCode
 
 
 class PasswordResetCodeAdmin(admin.ModelAdmin):
@@ -7,4 +7,3 @@ class PasswordResetCodeAdmin(admin.ModelAdmin):
     
 admin.site.register(PasswordResetCode,PasswordResetCodeAdmin)
 admin.site.register(CustomUser)
-admin.site.register(AbstractBaseCode)

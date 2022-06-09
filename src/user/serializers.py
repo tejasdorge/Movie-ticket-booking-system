@@ -14,13 +14,11 @@ class LoginSerializer(serializers.Serializer):
         }
 
     def validate(self, data):
-        print("hello")
         phone_number = data.get('phone_number')
         email = data.get('email')
         password = data.get('password')
         user = authenticate(
             username = phone_number or email, password=password)  
-        print(user,phone_number,email)
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Invalid Details.")
@@ -72,5 +70,5 @@ class PasswordResetSerializer(serializers.Serializer):
     email = serializers.EmailField(max_length=255)
 
 class PasswordResetVerifiedSerializer(serializers.Serializer):
-    code = serializers.CharField(max_length=40)
+    code = serializers.CharField(max_length=200)
     password = serializers.CharField(max_length=128)

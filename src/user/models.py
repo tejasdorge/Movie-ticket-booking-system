@@ -6,14 +6,14 @@ from django.core.mail import send_mail
 import binascii
 import os
 from cryptography.fernet import Fernet
-
-
+key = b'IqRdzA3BdkyA83m7zU3eijQfwgHDxK2oh_ID4qul61Y='
+f = Fernet(key)
 
 def _generate_code():
     return binascii.hexlify(os.urandom(20)).decode('utf-8')
 
+
 class CustomUserManager(BaseUserManager):
-    """Define a model manager for User model with no username field."""
     def create_user(self, email, phone_number, password, **extra_fields):
         if not email:
             raise ValueError("email is required")
@@ -44,27 +44,24 @@ class CustomUser(AbstractUser):
         return self.username
 
 class PasswordResetCodeManager(models.Manager):
-    def create_password_reset_code(self, user):
+    def send_mail(self, user):
+        prefix = 'password_reset_email'
         code = _generate_code()
-        password_reset_code = self.create(user=user, code=code)
+        username = user.username
+        useremail = user.email
+        context = ",".join([username,useremail,code])
+        byte_context=bytes(context, 'utf-8')
+        token = f.encrypt(byte_context)
+        token = token.decode()
+        print(token)
+        # send_mail(prefix , token, 'tejasjdorge@gmail.com', [user.email], fail_silently=False)
+        return None
 
-        return password_reset_code
-
-class AbstractBaseCode(models.Model):
+class PasswordResetCode(models.Model):
+    objects = PasswordResetCodeManager()
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    code = models.CharField(max_length=40, primary_key=True)
+    code = models.CharField(max_length=150)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-    def send_email(self, prefix):
-        send_mail(prefix, self.code, 'tejasjdorge@gmail.com', [self.user.email],fail_silently=False,)
-
-    def __str__(self):
-        return self.code
-
-class PasswordResetCode(AbstractBaseCode):
-    objects = PasswordResetCodeManager()
-
-    def send_password_reset_email(self):
-        prefix = 'password_reset_email'
-        self.send_email(prefix)
+    

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 try:
     from .local import *
@@ -45,7 +46,9 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework',
     'knox',
+    'encrypted_model_fields',
 ]
+
 
 AUTH_USER_MODEL = 'user.CustomUser'
 
@@ -57,8 +60,39 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'user.middleware.CustomMiddleware',
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(name)-12s %(levelname)-8s %(message)s'
+        },
+        'file': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
+        },
+        'info':{
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'formatter': 'file',
+            'filename': "log/info.log"
+        }
+    },
+    'loggers': {
+        'movie': {
+            'level': 'INFO',
+            'handlers': ['console', 'info']
+        },
+    }
+}
 
 ROOT_URLCONF = 'core.urls'
 
@@ -97,7 +131,7 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'database',
+        'NAME': 'movie',
 
         'USER': 'postgres',
 
@@ -110,6 +144,13 @@ DATABASES = {
     }
 
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'db.sqlite3',
+#     }
+# }
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
