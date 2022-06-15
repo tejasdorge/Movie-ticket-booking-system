@@ -1,18 +1,17 @@
-from time import time
-from django.shortcuts import render
-from .models import CustomUser, PasswordResetCode
-from .serializers import LoginSerializer, UserMeSerializer, UserSerializer, ChangePasswordSerializer, PasswordResetSerializer, PasswordResetVerifiedSerializer
+"""
+view file
+"""
 from knox.models import AuthToken
-from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework import status
-from django.core.exceptions import ObjectDoesNotExist
-from django.utils import timezone
-from datetime import timedelta
-from core.settings import *
+from django.shortcuts import get_object_or_404
+from .models import CustomUser, PasswordResetCode
+from .serializers import (LoginSerializer, UserSerializer, ChangePasswordSerializer,
+PasswordResetSerializer, PasswordResetVerifiedSerializer)
+# from core.settings import *
 from .models import f
 
 
@@ -27,14 +26,39 @@ class LoginView(generics.GenericAPIView):
         return Response({
             "token": token
         })
-        
-class UserViewSet(viewsets.ModelViewSet):
+
+class SignUpView(generics.GenericAPIView):
     serializer_class = UserSerializer
 
-    def get_queryset(self):
-        user = self.request.user
-        queryset = CustomUser.objects.filter(username=user)
-        return queryset
+    def post(self, request, *args, **kwargs):
+        serializer = UserSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        token = AuthToken.objects.create(user)
+        return Response({
+        "user": UserSerializer(user, context=self.get_serializer_context()).data,
+        })
+
+class UserViewSet(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = CustomUser.objects.all()
+
+    lookup_field = 'username'
+    lookup_url_kwarg = None
+
+    def get_object(self):
+        """
+        Returns the object the view is displaying.
+        You may want to override this if you need to provide non-standard
+        queryset lookups.  Eg if objects are referenced using multiple
+        keyword arguments in the url conf.
+        """
+        queryset = self.filter_queryset(self.get_queryset())
+        # Perform the lookup filtering.
+        lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
+        filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
+        obj = get_object_or_404(queryset, **filter_kwargs)
+        return obj
 
     @action(detail=True, methods=['patch'], url_path='change-password')
     def change_password(self, request, **kwargs):
@@ -90,4 +114,3 @@ class UserViewSet(viewsets.ModelViewSet):
         except Exception:
             content = {'detail': ('Unable to verify user.')}
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
-            

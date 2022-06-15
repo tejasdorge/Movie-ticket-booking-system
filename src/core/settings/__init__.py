@@ -43,10 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
-    'phonenumber_field',
     'rest_framework',
     'knox',
-    'encrypted_model_fields',
+    'movie',
+    'django_filters',
 ]
 
 
@@ -79,7 +79,7 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'console'
         },
-        'info':{
+        'info': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'file',
@@ -131,7 +131,7 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'movie',
+        'NAME': 'movies',
 
         'USER': 'postgres',
 
@@ -166,6 +166,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -176,7 +177,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 
 # Static files (CSS, JavaScript, Images)
@@ -194,6 +194,9 @@ REST_FRAMEWORK = {
     'TOKEN_TTL': timedelta(hours=100),
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend',]
+}
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'tejasjdorge@gmail.com'

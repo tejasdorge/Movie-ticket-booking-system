@@ -1,6 +1,6 @@
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
-from django.contrib.auth import backends, get_user_model
+from django.contrib.auth import get_user_model
 
 class AuthentificationBackend(ModelBackend):
     """
@@ -9,7 +9,6 @@ class AuthentificationBackend(ModelBackend):
 
     def authenticate(self, request, username=None, password=None, **kwargs):
         USER = get_user_model()
-        
         if username is None:
             username = kwargs.get(USER.USERNAME_FIELD)
         try:
@@ -17,9 +16,8 @@ class AuthentificationBackend(ModelBackend):
                  Q(email=username) | Q(phone_number=username)
             )
             password_valid = user.check_password(password)
-            if password_valid:            
+            if password_valid:
                 return user
             return None
         except USER.DoesNotExist:
             return None
-

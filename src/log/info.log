@@ -1,1 +1,16 @@
 2022-06-09 15:01:41,309 movie        INFO     {'request_method': 'GET', 'request_path': '/user/', 'response_status_code': 200, 'response_data': [OrderedDict([('username', 'tejas'), ('email', 'swatijdorge.12@gmail.com'), ('phone_number', '+919087654278'), ('address', None), ('is_staff', True), ('is_superuser', True), ('is_active', True)])]}
+2022-06-09 18:48:06,339 movie        INFO     {'request_method': 'GET', 'request_path': '/', 'response_status_code': 200, 'response_data': OrderedDict([('user', 'http://127.0.0.1:8000/user/')])}
+2022-06-09 18:50:18,670 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/', 'response_status_code': 302}
+2022-06-09 18:50:19,189 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/login/?next=/admin/', 'response_status_code': 200}
+2022-06-09 18:50:19,499 movie        INFO     {'request_method': 'GET', 'request_path': '/favicon.ico', 'response_status_code': 404}
+2022-06-09 18:50:25,315 movie        INFO     {'request_method': 'POST', 'request_path': '/admin/login/?next=/admin/', 'response_status_code': 200}
+2022-06-09 18:50:29,434 movie        INFO     {'request_method': 'POST', 'request_path': '/admin/login/?next=/admin/', 'response_status_code': 302}
+2022-06-09 18:50:29,977 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/', 'response_status_code': 200}
+2022-06-09 18:50:34,601 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/movie/movie/', 'response_status_code': 200}
+2022-06-09 18:50:34,825 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/jsi18n/', 'response_status_code': 200}
+2022-06-09 18:50:39,504 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/movie/seat/', 'response_status_code': 200}
+2022-06-09 18:50:39,608 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/jsi18n/', 'response_status_code': 200}
+2022-06-09 18:50:41,501 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/movie/seat/add/', 'response_status_code': 200}
+2022-06-09 18:50:41,765 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/jsi18n/', 'response_status_code': 200}
+2022-06-09 18:50:50,310 movie        INFO     {'request_method': 'POST', 'request_path': '/admin/movie/seat/add/', 'response_status_code': 200}
+2022-06-09 18:50:50,414 movie        INFO     {'request_method': 'GET', 'request_path': '/admin/jsi18n/', 'response_status_code': 200}
