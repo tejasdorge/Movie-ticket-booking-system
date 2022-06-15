@@ -131,13 +131,13 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'movies',
+        'NAME': 'deshlkq277cgp9',
 
-        'USER': 'postgres',
+        'USER': 'lkpgmbimzmacwq',
 
-        'PASSWORD': 'tejas',
+        'PASSWORD': 'b17d3d42edf270dd772b3836f34ab6bb866f308745beeb06110901cfcfae3f45',
 
-        'HOST': '127.0.0.1',
+        'HOST': 'ec2-52-22-136-117.compute-1.amazonaws.com',
 
         'PORT': '5432',
 
