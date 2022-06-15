@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
+import django_heroku
 
 try:
     from .local import *
@@ -32,7 +33,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = ['core.herokuapp.com']
 
-
+DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -203,3 +204,5 @@ EMAIL_HOST_USER = 'tejasjdorge@gmail.com'
 EMAIL_HOST_PASSWORD = 'dqdvieebxqpysqzk'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+django_heroku.settings(locals())
