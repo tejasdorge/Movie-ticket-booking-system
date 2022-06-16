@@ -1,6 +1,6 @@
 
 
-# DEBUG = False
+DEBUG = False
 
 
 # DATABASES = {
