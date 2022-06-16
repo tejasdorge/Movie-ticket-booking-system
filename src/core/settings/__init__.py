@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['localhost','src.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','core.herokuapp.com']
 
 DEBUG = True
 # Application definition
