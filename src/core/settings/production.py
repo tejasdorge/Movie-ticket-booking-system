@@ -3,32 +3,32 @@ import os
 from decouple import config # To Retrieve the configuration parameters (from heroku)
 import django_heroku
 
-# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = False
 
-# DATABASES = {
+DATABASES = {
 
-#     'default': {
+    'default': {
 
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-#         'NAME': 'dbohsl4h8lkdu4',
+        'NAME': 'dbohsl4h8lkdu4',
 
-#         'USER': 'nxzfmbtpztxfmi',
+        'USER': 'nxzfmbtpztxfmi',
 
-#         'PASSWORD': '9af1318fe9986e9a17cf2c1269b2f7289065c7ba7f1d58bbb55218b4df8f8242',
+        'PASSWORD': '9af1318fe9986e9a17cf2c1269b2f7289065c7ba7f1d58bbb55218b4df8f8242',
 
-#         'HOST': 'ec2-54-157-16-196.compute-1.amazonaws.com',
+        'HOST': 'ec2-54-157-16-196.compute-1.amazonaws.com',
 
-#         'PORT': '5432',
+        'PORT': '5432',
 
-#     }
+    }
 
-# }
+}
 
 
 

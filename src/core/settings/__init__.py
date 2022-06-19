@@ -134,25 +134,6 @@ AUTHENTICATION_BACKENDS = [
 #     }
 # }
 
-DATABASES = {
-
-    'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'dbohsl4h8lkdu4',
-
-        'USER': 'nxzfmbtpztxfmi',
-
-        'PASSWORD': '9af1318fe9986e9a17cf2c1269b2f7289065c7ba7f1d58bbb55218b4df8f8242',
-
-        'HOST': 'ec2-54-157-16-196.compute-1.amazonaws.com',
-
-        'PORT': '5432',
-
-    }
-
-}
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -221,4 +202,4 @@ EMAIL_HOST_PASSWORD = 'dqdvieebxqpysqzk'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-django_heroku.settings(locals(),staticfiles=False) 
+django_heroku.settings(locals()) 
