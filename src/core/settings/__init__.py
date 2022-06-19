@@ -127,13 +127,6 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'db.sqlite3',
-#     }
-# }
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
