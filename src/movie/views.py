@@ -24,6 +24,7 @@ class MovieViewSet(viewsets.ModelViewSet):
     permission_classes = (MyPermission,)
     serializer_class = MovieSerializer
     queryset = Movie.objects.all()
+    print(queryset)
     filter_backends = [SearchFilter,OrderingFilter]
     search_fields = ['title','cast__name']
     ordering_fields = ['popularity_index']
