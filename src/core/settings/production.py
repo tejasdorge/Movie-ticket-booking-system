@@ -77,4 +77,4 @@ DATABASES = {
 # MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
 
 
-django_heroku.settings(locals()) # if staticfiles = False then heroku does not take care of static files
+django_heroku.settings(locals()) 
