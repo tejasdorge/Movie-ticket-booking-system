@@ -8,7 +8,6 @@ from knox.auth import TokenAuthentication
 from rest_framework.decorators import action
 from .serializers import (MovieSerializer, ShowsSerializer, SeatSerializer)
 from .models import (Movie, Seat, Shows)
-
 SAFE_METHODS = ['GET', 'HEAD', 'OPTIONS']
 
 
