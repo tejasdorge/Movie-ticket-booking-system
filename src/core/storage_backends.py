@@ -3,7 +3,7 @@ from storages.backends.s3boto3 import S3Boto3Storage
 
 class MediaStore(S3Boto3Storage):
     location = 'media'
-    file_overwrite = False
+    file_overwrite = True
 
 
 # S3Boto3Storage to add a few custom parameters, in order to be able to store the user uploaded files,
