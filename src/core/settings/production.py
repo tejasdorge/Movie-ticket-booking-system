@@ -2,6 +2,9 @@ from pathlib import Path
 import os
 from decouple import config 
 import django_heroku
+import environ
+# Initialise environment variables
+env = environ.Env()
 
 SECRET_KEY = config('SECRET_KEY')
 
@@ -10,21 +13,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = False
 
-
+ROOT_URLCONF = 'core.urls'
 
 DATABASES = {
 
     'default': {
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': env('ENGINE'),
 
-        'NAME': 'dbohsl4h8lkdu4',
+        'NAME': env('NAME'),
 
-        'USER': 'nxzfmbtpztxfmi',
+        'USER': env('USER'),
 
-        'PASSWORD': '9af1318fe9986e9a17cf2c1269b2f7289065c7ba7f1d58bbb55218b4df8f8242',
+        'PASSWORD': env('PASSWORD'),
 
-        'HOST': 'ec2-54-157-16-196.compute-1.amazonaws.com',
+        'HOST': env('HOST'),
 
         'PORT': '5432',
 
