@@ -163,11 +163,11 @@ USE_TZ = True
 
 MEDIA_ROOT = 'C:/Users/SHREE/Desktop/Movie/media/'
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = 'C:/Users/SHREE/Desktop/Movie/static/'
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 
 
