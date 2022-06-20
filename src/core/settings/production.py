@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = False
 
-ROOT_URLCONF = 'core.urls'
+
 
 DATABASES = {
 
