@@ -95,7 +95,6 @@ LOGGING = {
     }
 }
 
-ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {

@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-from decouple import config # To Retrieve the configuration parameters (from heroku)
+from decouple import config 
 import django_heroku
 
 SECRET_KEY = config('SECRET_KEY')
@@ -9,6 +9,8 @@ SECRET_KEY = config('SECRET_KEY')
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = False
+
+ROOT_URLCONF = 'core.urls'
 
 DATABASES = {
 
