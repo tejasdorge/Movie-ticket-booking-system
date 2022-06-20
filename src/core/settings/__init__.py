@@ -161,11 +161,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = 'C:/Users/SHREE/Desktop/Movie/media/'
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = 'C:/Users/SHREE/Desktop/Movie/static/'
 
 MEDIA_URL = 'media/'
 
