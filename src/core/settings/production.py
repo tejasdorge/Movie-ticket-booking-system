@@ -4,7 +4,7 @@ from decouple import config
 import django_heroku
 import environ
 # Initialise environment variables
-env = environ.Env()
+env = os.environ
 
 SECRET_KEY = config('SECRET_KEY')
 
@@ -19,15 +19,15 @@ DATABASES = {
 
     'default': {
 
-        'ENGINE': env('ENGINE'),
+        'ENGINE': env.get('ENGINE'),
 
-        'NAME': env('NAME'),
+        'NAME': env.get('NAME'),
 
-        'USER': env('USER'),
+        'USER': env.get('USER'),
 
-        'PASSWORD': env('PASSWORD'),
+        'PASSWORD': env.get('PASSWORD'),
 
-        'HOST': env('HOST'),
+        'HOST': env.get('HOST'),
 
         'PORT': '5432',
 
