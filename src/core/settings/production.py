@@ -1,8 +1,7 @@
 from pathlib import Path
 import os
 from decouple import config 
-import django_heroku
-import environ
+
 # Initialise environment variables
 env = os.environ
 
