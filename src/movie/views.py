@@ -20,8 +20,8 @@ class MyPermission(permissions.BasePermission):
 
 
 class MovieViewSet(viewsets.ModelViewSet):
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (MyPermission,)
+    # authentication_classes = (TokenAuthentication,)
+    # permission_classes = (MyPermission,)
     serializer_class = MovieSerializer
     queryset = Movie.objects.all()
     filter_backends = [SearchFilter,OrderingFilter]
