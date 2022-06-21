@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['localhost','movie002.herokuapp.com']
+ALLOWED_HOSTS = ['http://127.0.0.1:8000','movie002.herokuapp.com']
 
 DEBUG = True
 # Application definition
