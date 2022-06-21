@@ -15,10 +15,10 @@ from datetime import timedelta
 import os
 import django_heroku
 
-# try:
-#     from .local import *
-# except (ImportError, ModuleNotFoundError):
-from .production import *
+try:
+    from .local import *
+except (ImportError, ModuleNotFoundError):
+    from .production import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,9 +31,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['http://127.0.0.1:8000','movie002.herokuapp.com']
+ALLOWED_HOSTS = ['movie002.herokuapp.com']
 
-DEBUG = True
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'movie',
     'django_filters',
     'storages',
+    'corsheaders',
 ]
 
 
@@ -63,6 +64,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'user.middleware.CustomMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
 ]
 
 LOGGING = {
