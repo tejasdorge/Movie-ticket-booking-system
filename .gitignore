@@ -1,2 +1,6 @@
 .env
+<<<<<<< HEAD
 src/core/settings/local.py
+=======
+# src/core/settings/local.py
+>>>>>>> e2be179 (make it better)
