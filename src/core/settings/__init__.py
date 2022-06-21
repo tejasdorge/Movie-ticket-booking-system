@@ -45,11 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'rest_framework',
+    'corsheaders',
     'knox',
     'movie',
     'django_filters',
     'storages',
-    'corsheaders',
+    
 ]
 
 
