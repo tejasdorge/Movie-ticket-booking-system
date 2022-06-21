@@ -15,12 +15,12 @@ from datetime import timedelta
 import os
 import django_heroku
 
-try:
-    from .local import *
-except (ImportError, ModuleNotFoundError):
-    from .production import *
+# try:
+#     from .local import *
+# except (ImportError, ModuleNotFoundError):
+from .production import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -164,11 +164,9 @@ USE_TZ = True
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "..", "..","media")
 
-print(os.path.join(BASE_DIR, "..", "..","media"))
-
 STATIC_URL = '/static/'
 
-STATIC_ROOT = 'C:/Users/SHREE/Desktop/Movie/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "..", "..","static")
 
 MEDIA_URL = '/media/'
 
