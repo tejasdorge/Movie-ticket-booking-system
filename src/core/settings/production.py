@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 from decouple import config 
+import dj_database_url
 
 # Initialise environment variables
 env = os.environ
@@ -33,7 +34,8 @@ DATABASES = {
     }
 
 }
-
+DATABASES['default'] = dj_database_url.parse(config("DATABASE_URL"))
+print(DATABASES)
 
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
 

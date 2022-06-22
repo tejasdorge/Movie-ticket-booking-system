@@ -15,6 +15,7 @@ from datetime import timedelta
 import os
 import django_heroku
 
+
 # try:
 #     from .local import *
 # except (ImportError, ModuleNotFoundError):
@@ -68,7 +69,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-CORS_ALLOW_ALL_ORIGINS:True
+CORS_ORIGIN_ALLOW_ALL = True
 
 LOGGING = {
     'version': 1,
