@@ -15,30 +15,10 @@ DEBUG = False
 
 ROOT_URLCONF = 'core.urls'
 
-# DATABASES = {
+DATABASES = {'default': dj_database_url.config("DATABASE_URL")}
 
-#     'default': {
 
-#         'ENGINE': env.get('ENGINE'),
-
-#         'NAME': env.get('NAME'),
-
-#         'USER': env.get('USER'),
-
-#         'PASSWORD': env.get('PASSWORD'),
-
-#         'HOST': env.get('HOST'),
-
-#         'PORT': '5432',
-
-#     }
-
-# }
-
-DATABASES = {'default': dj_database_url.config("DATABASE_URL",conn_max_age=600)}
-# DEFAULT_CONNECTION = dj_database_url.parse(config("DATABASE_URL"))
-# DATABASES.update({"CONN_MAX_AGE": 600})
-print(DATABASES)
+# CONN_MAX_AGE: To keep a connection to database open after the request is complete. This allows you to avoid creating a connection on every single request
 
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
 
