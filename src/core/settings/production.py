@@ -15,26 +15,29 @@ DEBUG = False
 
 ROOT_URLCONF = 'core.urls'
 
-DATABASES = {
+# DATABASES = {
 
-    'default': {
+#     'default': {
 
-        'ENGINE': env.get('ENGINE'),
+#         'ENGINE': env.get('ENGINE'),
 
-        'NAME': env.get('NAME'),
+#         'NAME': env.get('NAME'),
 
-        'USER': env.get('USER'),
+#         'USER': env.get('USER'),
 
-        'PASSWORD': env.get('PASSWORD'),
+#         'PASSWORD': env.get('PASSWORD'),
 
-        'HOST': env.get('HOST'),
+#         'HOST': env.get('HOST'),
 
-        'PORT': '5432',
+#         'PORT': '5432',
 
-    }
+#     }
 
-}
-DATABASES['default'] = dj_database_url.parse(config("DATABASE_URL"))
+# }
+
+DATABASES = {'default': dj_database_url.config("DATABASE_URL",conn_max_age=600)}
+# DEFAULT_CONNECTION = dj_database_url.parse(config("DATABASE_URL"))
+# DATABASES.update({"CONN_MAX_AGE": 600})
 print(DATABASES)
 
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
