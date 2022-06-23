@@ -27,22 +27,10 @@ class LoginView(generics.GenericAPIView):
             "token": token
         })
 
-class SignUpView(generics.GenericAPIView):
-    serializer_class = UserSerializer
-
-    def post(self, request, *args, **kwargs):
-        serializer = UserSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        token = AuthToken.objects.create(user)
-        return Response({
-        "user": UserSerializer(user, context=self.get_serializer_context()).data,
-        })
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = CustomUser.objects.all()
-
     lookup_field = 'username'
     lookup_url_kwarg = None
 

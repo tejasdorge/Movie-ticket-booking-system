@@ -1,9 +1,7 @@
-from functools import partial
 from rest_framework import (viewsets, status, permissions)
 from rest_framework.response import Response
 # from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import (SearchFilter, OrderingFilter)
-from rest_framework.permissions import IsAdminUser
 from knox.auth import TokenAuthentication
 from rest_framework.decorators import action
 from .serializers import (MovieSerializer, ShowsSerializer, SeatSerializer)
@@ -12,9 +10,8 @@ SAFE_METHODS = ['GET', 'HEAD', 'OPTIONS']
 
 
 class MyPermission(permissions.BasePermission):
-    
     def has_permission(self, request, view):
-        if (request.method in SAFE_METHODS):
+        if request.method in SAFE_METHODS:
             return True
         return False
 

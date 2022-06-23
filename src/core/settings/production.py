@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-from decouple import config 
+from decouple import config
 import dj_database_url
 
 # Initialise environment variables
@@ -18,7 +18,8 @@ ROOT_URLCONF = 'core.urls'
 DATABASES = {'default': dj_database_url.config("DATABASE_URL")}
 
 
-# CONN_MAX_AGE: To keep a connection to database open after the request is complete. This allows you to avoid creating a connection on every single request
+# CONN_MAX_AGE: To keep a connection to database open after the request is complete.
+# This allows you to avoid creating a connection on every single request
 
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
 
@@ -45,5 +46,3 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
 
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
-
-
